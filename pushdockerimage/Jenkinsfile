@@ -24,14 +24,9 @@ pipeline {
             }
         stage('Docker Push') {
             steps {
-		    script {
-	         docker.withRegistry('https://registry.hub.docker.com', '$DOCKERHUB_CREDS'){
-		 sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'      
-		//sh 'docker push souravdevloper/jenkinstest' (this will use the tag latest)    
+		//sh 'docker push raj80dockerid/jenkinstest' (this will use the tag latest)    
                 sh 'docker push souravdevloper/jenkinstest:$BUILD_NUMBER'
                 }
-		    }
-	    }
             }
         }
     post {
