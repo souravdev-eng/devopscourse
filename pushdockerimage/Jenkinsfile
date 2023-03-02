@@ -24,9 +24,9 @@ pipeline {
             }
         stage('Docker Push') {
             steps {
-	      withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: $DOCKERHUB_CREDS_PSW, usernameVariable: $DOCKERHUB_CREDS_USR)]){
+		withCredentials([usernameColonPassword(credentialsId: 'dockerHub', variable: 'dockerHub')]){
                 sh 'docker push souravdevloper/jenkinstest:$BUILD_NUMBER'
-		    }			     
+		   }			     
                 }
             }
         }
