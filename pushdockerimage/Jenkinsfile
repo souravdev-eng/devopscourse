@@ -24,7 +24,8 @@ pipeline {
             }
         stage('Docker Push') {
             steps {
-		docker.withRegistry('https://registry.hub.docker.com', "dockerHub") {
+		 sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'  
+		 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                 	sh 'docker push souravdevloper/jenkinstest:$BUILD_NUMBER'			     
 		    }
 	    	}
