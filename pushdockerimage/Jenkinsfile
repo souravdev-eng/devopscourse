@@ -24,8 +24,8 @@ pipeline {
             }
         stage('Docker Push') {
             steps {
-		withDockerRegistry([credentialsId: "dockerHub", url: ""]){
-                sh 'docker push souravdevloper/jenkinstest:$BUILD_NUMBER'			     
+		withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+                	sh 'docker push souravdevloper/jenkinstest:$BUILD_NUMBER'			     
 		    }
 	    	}
             }
